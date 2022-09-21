@@ -12,7 +12,7 @@ pipeline{
                 sh "java -version"
             }
         }
-        stage ('Test') {
+        stage ('Test1') {
             agent { docker 'openjdk:8'}
             steps {
                 sh "java -version"
