@@ -1,10 +1,10 @@
 pipeline{
-    agent none
+    // agent none
     // agent {
     //     dockerfile true
     // }
-    // agent any
-    // tools {dockerTool  "docker" } 
+    agent any
+    tools {dockerTool  "docker" } 
     stages {
         stage ('Test') {
             agent { docker 'openjdk:7'}
