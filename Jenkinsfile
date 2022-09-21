@@ -1,13 +1,21 @@
 pipeline{
-    agent {
-        dockerfile true
-    }
+    agent none
+    // agent {
+    //     dockerfile true
+    // }
     // agent any
     // tools {dockerTool  "docker" } 
     stages {
         stage ('Test') {
+            agent { docker 'openjdk:7'}
             steps {
-                echo "HELLO WORLD"
+                sh "java -version"
+            }
+        }
+        stage ('Test') {
+            agent { docker 'openjdk:8'}
+            steps {
+                sh "java -version"
             }
         }
     }
