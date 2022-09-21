@@ -7,7 +7,7 @@ pipeline{
     stages {
         stage ('Test') {
             steps {
-                sh 'pytest -s --log-cli-level INFO'
+                sh 'pytest'
                 // sh '''
                 // IMAGE_NAME="test-image"
                 // CONTAINER_NAME="test-container"
