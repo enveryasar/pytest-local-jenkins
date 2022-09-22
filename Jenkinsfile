@@ -48,10 +48,7 @@ pipeline{
             post {
                 always {
                     dir("${WORKSPACE}"){
-                        stash includes: "Dockerfile", name: 'results-stashed'
-                        // stash includes: "${WORKSPACE}/reports/*", name: 'RESULTS'
-                        zip zipFile: 'report.zip', archive: true
-                        archiveArtifacts artifacts: 'results.xml'
+                        stash includes: "test-results", name: 'results-stashed'
                     }
                 }
             }
