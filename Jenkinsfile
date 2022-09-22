@@ -43,11 +43,11 @@ pipeline{
                 }
                 sh "ls"
                 // sh "ls -la ${pwd()}"
-                sh '$PWD/test-results'
+                // sh '$PWD/test-results'
             }
             post {
                 always {
-                    stash includes: '$PWD/test-results', name: 'RESULTS'
+                    stash includes: '$WORKSPACE/test-results', name: 'RESULTS'
                     // stash includes: "${WORKSPACE}/reports/*", name: 'RESULTS'
                     zip zipFile: 'report.zip', archive: true
                     archiveArtifacts artifacts: 'results.xml'
