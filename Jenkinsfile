@@ -26,7 +26,7 @@ pipeline{
         stage ('Test') {
             steps {
                 echo "HELLO WORLD"
-                sh 'docker build -t testImage .'
+                sh 'docker build -t test-image .'
             }
         }
     }
