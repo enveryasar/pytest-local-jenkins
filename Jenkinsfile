@@ -36,7 +36,7 @@ pipeline{
             }
             post {
                 always {
-                    stash includes: 'reports/results.xml', name: 'RESULTS'
+                    stash includes: '/python-test/reports/result.xml', name: 'RESULTS'
                     zip zipFile: 'report.zip', archive: true
                     archiveArtifacts artifacts: 'results.xml'
                 }
