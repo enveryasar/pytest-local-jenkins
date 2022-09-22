@@ -47,10 +47,12 @@ pipeline{
             }
             post {
                 always {
-                    stash includes: "${WORKSPACE}/test-results/result.xml", name: 'RESULTS'
-                    // stash includes: "${WORKSPACE}/reports/*", name: 'RESULTS'
-                    zip zipFile: 'report.zip', archive: true
-                    archiveArtifacts artifacts: 'results.xml'
+                    dir("${WORKSPACE}"){
+                        stash includes: "/test-results/result.xml", name: 'RESULTS'
+                        // stash includes: "${WORKSPACE}/reports/*", name: 'RESULTS'
+                        zip zipFile: 'report.zip', archive: true
+                        archiveArtifacts artifacts: 'results.xml'
+                    }
                 }
             }
         }
