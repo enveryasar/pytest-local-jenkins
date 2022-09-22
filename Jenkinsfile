@@ -32,7 +32,14 @@ pipeline{
         stage ('Run in Container') {
             steps {
                 echo "RUN IN CONTAINER"
-                sh 'docker run -v $(pwd):/python-test test-image pytest -s --log-cli-level INFO'
+                sh 'docker run --name test-container -v $(pwd):/python-test test-image pytest -s --log-cli-level INFO'
+            }
+        }
+        stage ('Cleanup') {
+            steps {
+                echo "DELETE THE IMAGE and CONTAINER"
+                sh 'docker rmi test-image'
+                sh 'docker rm test-container'
             }
         }
     }
