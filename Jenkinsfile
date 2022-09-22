@@ -35,7 +35,7 @@ pipeline{
                 sh 'docker run --name test-container -v $(pwd):/python-test test-image pytest --junitxml=reports/result.xml -s --log-cli-level INFO'
                 sh 'docker cp test-container:/python-test/reports/ .'
                 sh 'ls'
-                sh 'docker cp $PWD/reports/result.xml $WORKSPACE/test-results' //copy results in test-results
+                sh 'docker cp test-container:/python-test/reports/ $WORKSPACE/test-results' //copy results in test-results
                 script{
                     def reportPath = "${WORKSPACE}"
                     sh "ls ${WORKSPACE}"
