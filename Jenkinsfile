@@ -59,8 +59,8 @@ pipeline{
                 echo "DELETE THE IMAGE and CONTAINER"
                 sh 'docker rm test-container'
                 sh 'docker rmi test-image'
-                sh "rm -f ${WORKSPACE}/reports"
-                sh "rm -f ${WORKSPACE}/test-results"
+                sh "rm -f ${WORKSPACE}/reports/"
+                sh "rm -f ${WORKSPACE}/test-results/"
             }
         }
     }
