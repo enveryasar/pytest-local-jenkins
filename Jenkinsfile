@@ -19,9 +19,8 @@
 
 
 pipeline{
-    agent {
-        dockerfile true
-    }
+    agent none
+    tools {dockerTool  "docker" } 
     stages {
         stage ('Test') {
             steps {
