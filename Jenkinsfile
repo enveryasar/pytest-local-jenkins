@@ -21,10 +21,10 @@
 pipeline{
     agent none
     stages {
-        agent {
-            dockerfile true
-        }
         stage ('Test') {
+            agent {
+                dockerfile true
+            }
             steps {
                 echo "HELLO WORLD"
                 sh 'docker  build .'
