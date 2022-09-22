@@ -39,13 +39,13 @@ pipeline{
                 }
                 // sh "ls -la ${pwd()}"
             }
-            // post {
-            //     always {
-            //         stash includes: '/python-test/reports/result.xml', name: 'RESULTS'
-            //         zip zipFile: 'report.zip', archive: true
-            //         archiveArtifacts artifacts: 'results.xml'
-            //     }
-            // }
+            post {
+                always {
+                    stash includes: "${WORKSPACE}/reports/result.xml", name: 'RESULTS'
+                    zip zipFile: 'report.zip', archive: true
+                    archiveArtifacts artifacts: 'results.xml'
+                }
+            }
         }
         stage ('Cleanup') {
             steps {
