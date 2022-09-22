@@ -19,7 +19,7 @@
 
 
 pipeline{
-    agent none
+    agent any
     tools {dockerTool  "docker" } 
     stages {
         stage ('Test') {
