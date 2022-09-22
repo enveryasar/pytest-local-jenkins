@@ -36,7 +36,7 @@ pipeline{
                 sh 'docker cp test-container:/python-test/reports/ .'
 
                 sh 'mkdir $WORKSPACE/test-results' //create shared test result folder
-                sh 'cp $PWD/results.xml $WORKSPACE/test-results' //copy results in test-results
+                sh 'cp $PWD/reports/results.xml $WORKSPACE/test-results' //copy results in test-results
                 script{
                     def reportPath = "${WORKSPACE}"
                     sh "ls ${WORKSPACE}"
