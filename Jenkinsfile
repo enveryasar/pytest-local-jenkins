@@ -35,7 +35,6 @@ pipeline{
                 sh 'docker run --name test-container -v $(pwd):/python-test test-image pytest --junitxml=reports/result.xml -s --log-cli-level INFO'
                 sh 'docker cp test-container:/python-test/reports/ .'
                 sh 'ls'
-                sh 'mkdir $WORKSPACE/test-results' //create shared test result folder
                 sh 'cp $PWD/reports/results.xml $WORKSPACE/test-results' //copy results in test-results
                 script{
                     def reportPath = "${WORKSPACE}"
@@ -47,7 +46,7 @@ pipeline{
             }
             post {
                 always {
-                    stash includes: "${WORKSPACE}/test-results", name: 'RESULTS'
+                    stash includes: "$WORKSPACE/test-results", name: 'RESULTS'
                     // stash includes: "${WORKSPACE}/reports/*", name: 'RESULTS'
                     zip zipFile: 'report.zip', archive: true
                     archiveArtifacts artifacts: 'results.xml'
