@@ -19,9 +19,11 @@
 
 
 pipeline{
-    agent docker
-    tools {dockerTool  "docker" } 
+    agent none
     stages {
+        agent {
+            dockerfile true
+        }
         stage ('Test') {
             steps {
                 echo "HELLO WORLD"
