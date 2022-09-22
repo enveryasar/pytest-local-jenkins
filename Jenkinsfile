@@ -19,7 +19,7 @@
 
 
 pipeline{
-    agent any
+    agent docker
     tools {dockerTool  "docker" } 
     stages {
         stage ('Test') {
@@ -48,7 +48,7 @@ pipeline{
 
 
 
-
+// https://medium.com/swlh/build-your-first-automated-test-integration-with-pytest-jenkins-and-docker-ec738ec43955
 
 // IMAGE_NAME="test-image"
 // CONTAINER_NAME="test-container"
