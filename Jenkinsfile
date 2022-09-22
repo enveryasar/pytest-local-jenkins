@@ -33,14 +33,15 @@ pipeline{
             steps {
                 echo "RUN IN CONTAINER"
                 sh 'docker run --name test-container -v $(pwd):/python-test test-image pytest --junitxml=reports/result.xml -s --log-cli-level INFO'
+                sh 'pwd'
             }
-            post {
-                always {
-                    stash includes: '/python-test/reports/result.xml', name: 'RESULTS'
-                    zip zipFile: 'report.zip', archive: true
-                    archiveArtifacts artifacts: 'results.xml'
-                }
-            }
+            // post {
+            //     always {
+            //         stash includes: '/python-test/reports/result.xml', name: 'RESULTS'
+            //         zip zipFile: 'report.zip', archive: true
+            //         archiveArtifacts artifacts: 'results.xml'
+            //     }
+            // }
         }
         stage ('Cleanup') {
             steps {
