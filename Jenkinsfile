@@ -32,7 +32,7 @@ pipeline{
         stage ('Run in Container') {
             steps {
                 echo "RUN IN CONTAINER"
-                sh 'docker run -it -v $(pwd):/python-test test-image'
+                sh 'docker run -v $(pwd):/python-test test-image pytest -s --log-cli-level INFO'
             }
         }
     }
