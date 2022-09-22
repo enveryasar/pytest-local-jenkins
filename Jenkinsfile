@@ -37,15 +37,14 @@ pipeline{
                 script{
                     def reportPath = "${WORKSPACE}"
                     sh "ls ${WORKSPACE}"
-                    // echo reportPath
-                    // docker cp test-container:reports/result.xml .
+                    echo reportPath
                 }
                 sh "ls"
                 // sh "ls -la ${pwd()}"
             }
             post {
                 always {
-                    stash includes: "${WORKSPACE}/reports/result.xml", name: 'RESULTS'
+                    stash includes: "${WORKSPACE}/reports", name: 'RESULTS'
                     // stash includes: "${WORKSPACE}/reports/*", name: 'RESULTS'
                     zip zipFile: 'report.zip', archive: true
                     archiveArtifacts artifacts: 'results.xml'
