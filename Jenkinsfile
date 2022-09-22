@@ -41,7 +41,7 @@ pipeline{
             }
             post {
                 always {
-                    stash includes: "${WORKSPACE}/reports/result.xml", name: 'RESULTS'
+                    stash includes: "${WORKSPACE}/reports", name: 'RESULTS'
                     zip zipFile: 'report.zip', archive: true
                     archiveArtifacts artifacts: 'results.xml'
                 }
