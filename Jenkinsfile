@@ -34,7 +34,7 @@ pipeline{
                 echo "RUN IN CONTAINER"
                 sh 'docker run --name test-container -v $(pwd):/python-test test-image pytest --junitxml=reports/result.xml -s --log-cli-level INFO'
                 // echo '$WORKSPACE'
-                echo '$PWD'
+                echo ${pwd()}
             }
             // post {
             //     always {
