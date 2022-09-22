@@ -19,14 +19,14 @@
 
 
 pipeline{
-    agent none
+    agent {
+        label 'docker'
+    }
     stages {
         stage ('Test') {
-            agent any
-            tools {dockerTool  "docker" } 
             steps {
                 echo "HELLO WORLD"
-                sh 'docker  build .'
+                sh 'docker  -v'
             }
         }
     }
