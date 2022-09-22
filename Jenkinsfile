@@ -23,10 +23,16 @@ pipeline{
         label 'docker'
     }
     stages {
-        stage ('Test') {
+        stage ('Build Image') {
             steps {
-                echo "HELLO WORLD"
+                echo "BUILD IMAGE"
                 sh 'docker build -t test-image .'
+            }
+        }
+        stage ('Run in Container') {
+            steps {
+                echo "RUN IN CONTAINER"
+                sh 'docker run -it -v $(pwd):/python-test test-image test_sample.py -s --log-cli-level INFO'
             }
         }
     }
