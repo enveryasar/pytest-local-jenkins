@@ -18,6 +18,7 @@ pipeline{
                     dir("${WORKSPACE}"){
                         stash includes: "test-results/result.xml", name: 'results-stashed'
                         archiveArtifacts artifacts: 'test-results/result.xml'
+                        junit 'test-results/result.xml'
                     }
                 }
             }
