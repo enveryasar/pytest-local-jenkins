@@ -48,7 +48,7 @@ pipeline{
             post {
                 always {
                     dir("${WORKSPACE}"){
-                        stash includes: "test-results", name: 'results-stashed'
+                        stash includes: "test-results/result.xml", name: 'results-stashed'
                     }
                 }
             }
