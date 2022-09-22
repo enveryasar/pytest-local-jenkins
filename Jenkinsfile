@@ -54,13 +54,13 @@ pipeline{
                 }
             }
         }
-        // stage ('Cleanup') {
-        //     steps {
-        //         echo "DELETE THE IMAGE and CONTAINER"
-        //         sh 'docker rm test-container'
-        //         sh 'docker rmi test-image'
-        //     }
-        // }
+        stage ('Cleanup') {
+            steps {
+                echo "DELETE THE IMAGE and CONTAINER"
+                sh 'docker rm test-container'
+                sh 'docker rmi test-image'
+            }
+        }
     }
 }
 
