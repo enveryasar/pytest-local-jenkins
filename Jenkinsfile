@@ -33,15 +33,18 @@ pipeline{
             steps {
                 echo "RUN IN CONTAINER"
                 sh 'docker run --name test-container -v $(pwd):/python-test test-image pytest --junitxml=reports/result.xml -s --log-cli-level INFO'
+                sh 'docker cp test-container:reports/result.xml .'
                 script{
                     def reportPath = "${WORKSPACE}/reports/result.xml"
                     echo reportPath
+                    // docker cp test-container:reports/result.xml .
                 }
+                sh "ls"
                 // sh "ls -la ${pwd()}"
             }
             post {
                 always {
-                    stash includes: "/pipeline-echo/reports/result.xml", name: 'RESULTS'
+                    stash includes: "${WORKSPACE}/reports/results.xml", name: 'RESULTS'
                     // stash includes: "${WORKSPACE}/reports/*", name: 'RESULTS'
                     zip zipFile: 'report.zip', archive: true
                     archiveArtifacts artifacts: 'results.xml'
