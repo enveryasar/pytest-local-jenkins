@@ -33,7 +33,7 @@ pipeline{
             steps {
                 echo "RUN IN CONTAINER"
                 sh 'docker run --name test-container -v $(pwd):/python-test test-image pytest --junitxml=reports/result.xml -s --log-cli-level INFO'
-                sh 'docker cp test-container:/python-test/reports/result.xml .'
+                sh 'docker cp test-container:/python-test/reports/ .'
                 script{
                     def reportPath = "${WORKSPACE}"
                     sh "ls ${WORKSPACE}"
