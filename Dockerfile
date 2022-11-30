@@ -14,4 +14,4 @@ COPY . /pytest-container
 WORKDIR /pytest-container
 RUN pip install --upgrade pip
 RUN pip3 install -r requirements.txt
-# ENTRYPOINT pytest -s -v test_sample.py
+# ENTRYPOINT pytest -s -v tests/test_sample.py

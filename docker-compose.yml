@@ -5,4 +5,4 @@ services:
       build:
           context: .
           dockerfile: ./Dockerfile
-      command: "pytest -s -v test_sample.py"
+      command: "pytest -s -v tests/test_sample.py"

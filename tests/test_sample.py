@@ -1,6 +1,6 @@
 import requests
-from constants import API_KEY
-# api_key = '4f8defcdf72c5c16da47804eacfaf7a1'
+from helpers.constants import API_KEY
+
 BASE_URL = 'https://api.themoviedb.org/3'
 
 
