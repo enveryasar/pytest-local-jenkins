@@ -1,23 +1,12 @@
 import requests
+from constants import API_KEY
+# api_key = '4f8defcdf72c5c16da47804eacfaf7a1'
+BASE_URL = 'https://api.themoviedb.org/3'
 
-def test_get_token():
-    url = "https://integrations.bynder-stage.com/v6/authentication/oauth2/token"
 
-    payload = 'client_id=64368a3f-963e-45c0-b9d9-f8bac02a8815&client_secret=abf25d20-6243-4d40-ac98-a1b46421ad3f&grant_type=client_credentials'
-    headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.status_code)
-    print(response.text)
-
-def test_get_a_new_token():
-    url = "https://integrations.bynder-stage.com/v6/authentication/oauth2/token"
-
-    payload = 'client_id=64368a3f-963e-45c0-b9d9-f8bac02a8815&client_secret=abf25d20-6243-4d40-ac98-a1b46421ad3f&grant_type=client_credentials'
-    headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
+def test_movie():
+    params = {'api_key': API_KEY}
+    response = requests.get(BASE_URL + '/movie/top_rated', params=params)
+    assert response.status_code == 200
     print(response.status_code)
     print(response.text)
