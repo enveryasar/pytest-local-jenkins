@@ -25,4 +25,10 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          API_KEY=${{secrets.MOVIE_API_KEY}} python3 -m pytest --log-cli-level=INFO -v -s --junitxml=results.xml
+          API_KEY='${{ secrets.MOVIE_API_KEY }}' python3 -m pytest --log-cli-level=INFO -v -s --junitxml=results.xml
+
+
+
+      # - name: Test with pytest
+      #   run: |
+      #     API_KEY='4f8defcdf72c5c16da47804eacfaf7a1' python3 -m pytest --log-cli-level=INFO -v -s --junitxml=results.xml
