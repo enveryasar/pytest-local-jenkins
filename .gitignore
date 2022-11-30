@@ -106,3 +106,4 @@ venv.bak/
 
 .devcontainer
 .DS_Store
+results.xml
