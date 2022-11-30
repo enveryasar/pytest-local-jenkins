@@ -25,11 +25,16 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          python3 -m pytest --log-cli-level=INFO -v -s --junitxml=results.xml
+          python3 -m pytest -v --junitxml=results.xml
         env:
           API_KEY: ${{secrets.MOVIE_API_KEY}}
 
-
+      - name: Artifact results.xml
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: results.xml
+          path: results.xml
 
       # - name: Test with pytest
       #   run: |
