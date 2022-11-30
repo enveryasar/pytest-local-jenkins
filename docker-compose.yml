@@ -1,0 +1,8 @@
+version: '3'
+services:
+    build-and-test:
+      image: pytest-image
+      build:
+          context: .
+          dockerfile: ./Dockerfile
+      command: "pytest -s -v test_sample.py"
