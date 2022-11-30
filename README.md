@@ -25,7 +25,7 @@ docker run -ti --name pytest-container pytest-image /bin/sh
 ```
 ### Run test inside container CLI:
 ```bash
-pytest -s -v test_sample.py
+pytest -s -v tests/test_sample.py
 ```
 
 
@@ -40,7 +40,7 @@ COPY . /pytest-container
 WORKDIR /pytest-container
 RUN pip install --upgrade pip
 RUN pip3 install -r requirements.txt
-ENTRYPOINT pytest -s -v test_sample.py
+ENTRYPOINT pytest -s -v tests/test_sample.py
 ```
 
 ### Build image:
